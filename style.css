@@ -1,14 +1,17 @@
-
+/* 基础样式 */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
   color: #fff;
   background: #000;
+  min-height: 100vh;
 }
 
+/* 背景图样式 */
 .background {
   position: fixed;
-  top: 0; left: 0;
+  top: 0; 
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-image: url('images/bg.jpg');
@@ -18,14 +21,17 @@ body {
   z-index: -1;
 }
 
+/* 主要内容区域 */
 .content {
   position: absolute;
   top: 10%;
   right: 10%;
   max-width: 400px;
   text-align: right;
+  padding: 20px;
 }
 
+/* 头像样式 */
 .portrait {
   width: 100px;
   height: 100px;
@@ -35,30 +41,60 @@ body {
   border: 2px solid white;
 }
 
-h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-p {
-  margin: 5px 0;
-}
-
+/* 导航链接样式 */
 nav ul {
   list-style: none;
   padding: 0;
+  margin-top: 30px;
 }
 
 nav li {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px;
-  transition: color 0.2s;
+  font-size: 18px;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+nav a:hover {
+  color: #ffbbbb;
+  transform: translateX(-5px);
+}
+
+/* 项目页面通用样式 */
+.project-container {
+  padding: 60px;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.project-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.project-container p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  color: #ccc;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 40px;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: white;
+}
 }
 
 nav a:hover {
