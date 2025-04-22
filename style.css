@@ -1,102 +1,99 @@
-/* 基础样式 */
-body {
+/* 基础重置 */
+* {
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
-  color: #fff;
-  background: #000;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 背景图样式 */
-.background {
+/* 使用House of Gul风格字体 */
+body {
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-weight: 400;
+  color: #000;
+  background: #f8f8f8;
+  overflow-x: hidden;
+}
+
+/* 自定义鼠标 */
+.cursor {
   position: fixed;
-  top: 0; 
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.6);
-  z-index: -1;
+  width: 24px;
+  height: 24px;
+  background-image: url('images/cursor-icon.png');
+  background-size: contain;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
 }
 
-/* 主要内容区域 */
-.content {
-  position: absolute;
-  top: 10%;
-  right: 10%;
-  max-width: 400px;
-  text-align: right;
-  padding: 20px;
+/* 长滚动容器 */
+.scroll-container {
+  min-height: 300vh;
 }
 
-/* 头像样式 */
+/* 居中内容 */
+.centered-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+}
+
 .portrait {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 20px;
-  border: 2px solid white;
-}
-
-/* 导航链接样式 */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-nav li {
-  margin: 15px 0;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s;
-  display: inline-block;
-}
-
-nav a:hover {
-  color: #ffbbbb;
-  transform: translateX(-5px);
-}
-
-/* 项目页面通用样式 */
-.project-container {
-  padding: 60px;
-  color: white;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.project-container h1 {
-  font-size: 2.5rem;
   margin-bottom: 30px;
+  filter: grayscale(100%);
+  transition: filter 0.5s;
 }
 
-.project-container p {
-  line-height: 1.6;
+.portrait:hover {
+  filter: grayscale(0%);
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 42px);
+  font-weight: 500;
   margin-bottom: 20px;
+  letter-spacing: -0.5px;
 }
 
-.back-link {
-  color: #ccc;
+.contact {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  opacity: 0.8;
+}
+
+/* 项目网格 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.project-icon {
+  font-size: 36px;
   text-decoration: none;
-  display: inline-block;
-  margin-top: 40px;
-  transition: color 0.3s;
+  color: inherit;
+  transition: transform 0.3s, opacity 0.3s;
+  display: flex;
+  justify-content: center;
 }
 
-.back-link:hover {
-  color: white;
-}
+.project-icon:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
 }
 
-nav a:hover {
-  color: #ffbbbb;
+/* 长滚动占位 */
+.spacer {
+  height: 100vh;
 }
