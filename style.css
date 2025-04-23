@@ -97,3 +97,50 @@ body {
 .spacer {
   height: 100vh;
 }
+/* ===== 新增的动态背景样式 ===== */
+#dynamic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* 长滚动布局 */
+.scroll-container {
+  min-height: 200vh;
+}
+
+.spacer {
+  height: 100vh;
+}
+
+/* 项目图标网格 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.project-icon {
+  font-size: 36px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+}
+
+.project-icon:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+/* 保持原有导航样式 */
+nav a {
+  color: #fff !important;
+  font-weight: bold;
+}
