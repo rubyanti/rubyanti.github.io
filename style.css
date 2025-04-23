@@ -1,93 +1,135 @@
-/* 基础样式 */
-body {
+/* 基础重置 */
+* {
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #fff;
-  background: #000;
-  overflow-x: hidden;
 }
 
 /* 动态背景 */
 #dynamic-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: -1000;
   overflow: hidden;
 }
 
 .parallax-layer {
   position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.6;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  opacity: 0.8;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* 居中内容 */
+/* 全屏滚动容器 */
 .scroll-container {
-  min-height: 200vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1), 
+              opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+
+/* 主页样式 */
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
 }
 
 .centered-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 90%;
-  max-width: 600px;
+  max-width: 800px;
+  padding: 20px;
 }
 
 .portrait {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 30px;
   border: 2px solid rgba(255,255,255,0.3);
+  filter: grayscale(30%);
 }
 
-/* 项目图标网格 */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 60px;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
-.project-icon {
-  font-size: 36px;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s;
-  display: flex;
-  justify-content: center;
+.contact-info {
+  margin: 30px 0;
+  line-height: 1.8;
 }
 
-.project-icon:hover {
-  transform: scale(1.2);
+.scroll-hint {
+  margin-top: 50px;
+  animation: float 2s ease-in-out infinite;
   opacity: 0.7;
 }
 
-/* 长滚动空间 */
-.spacer {
-  height: 100vh;
+/* 项目内页框架 */
+.project-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* 自定义鼠标 */
-.cursor {
-  position: fixed;
-  width: 24px;
-  height: 24px;
-  background: url('images/cursor.png') no-repeat;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
+.project-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .portrait {
+    width: 100px;
+    height: 100px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .project-section {
+    transition-duration: 0.8s;
+  }
 }
