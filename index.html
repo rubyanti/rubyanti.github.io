@@ -5,35 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jieru Zhang - Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 临时加载指示器 */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
+  <div id="loader">Loading...</div>
+  
   <!-- 动态背景容器 -->
   <div id="dynamic-bg"></div>
   
-  <!-- 居中内容 -->
+  <!-- 全屏滚动容器 -->
   <div class="scroll-container">
-    <main class="centered-content">
-      <img src="images/portrait.jpg" alt="Portrait" class="portrait">
-      <h1>JIERU ZHANG</h1>
-      <p>Email: jieruzhang957@gmail.com</p>
-      <p>Phone: +44 7826 820442</p>
-      <p>IG / RED: <strong>@rubyyy_anti</strong></p>
-      
-      <!-- 无边框项目图标 -->
-      <div class="projects-grid">
-        <a href="shell.html" class="project-icon">𓆝</a>
-        <a href="not-found-again.html" class="project-icon">𓆡</a>
-        <a href="insomnia.html" class="project-icon">𓇼</a>
-        <a href="skin-hole.html" class="project-icon">𓁹</a>
-        <a href="tentacles-wind.html" class="project-icon">𓆣</a>
-        <a href="babe.html" class="project-icon">𓃥</a>
+    <!-- 主页 -->
+    <section class="project-section" id="home">
+      <div class="centered-content">
+        <img src="images/portrait.jpg" alt="Jieru Zhang" class="portrait">
+        <h1>JIERU ZHANG</h1>
+        <div class="contact-info">
+          <p>Email: jieruzhang957@gmail.com</p>
+          <p>Phone: +44 7826 820442</p>
+          <p>IG / RED: <strong>@rubyyy_anti</strong></p>
+        </div>
+        <div class="scroll-hint">↓ Scroll to explore projects ↓</div>
       </div>
-    </main>
+    </section>
     
-    <!-- 长滚动空间 -->
-    <div class="spacer"></div>
+    <!-- 项目页面 -->
+    <section class="project-section" id="shell">
+      <div class="project-frame">
+        <iframe src="shell.html" loading="lazy"></iframe>
+      </div>
+    </section>
+    
+    <section class="project-section" id="not-found">
+      <div class="project-frame">
+        <iframe src="not-found-again.html" loading="lazy"></iframe>
+      </div>
+    </section>
+    
+    <section class="project-section" id="insomnia">
+      <div class="project-frame">
+        <iframe src="insomnia.html" loading="lazy"></iframe>
+      </div>
+    </section>
+    
+    <section class="project-section" id="skin-hole">
+      <div class="project-frame">
+        <iframe src="skin-hole.html" loading="lazy"></iframe>
+      </div>
+    </section>
+    
+    <section class="project-section" id="tentacles">
+      <div class="project-frame">
+        <iframe src="tentacles-wind.html" loading="lazy"></iframe>
+      </div>
+    </section>
+    
+    <section class="project-section" id="babe">
+      <div class="project-frame">
+        <iframe src="babe.html" loading="lazy"></iframe>
+      </div>
+    </section>
   </div>
 
+  <!-- 脚本加载 -->
+  <script src="js/parallax.js"></script>
+  <script src="js/scroll.js"></script>
+  
+  <script>
+    // 隐藏加载器
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
   <!-- JS文件 -->
   <script src="js/background.js"></script>
   <script src="js/script.js"></script>
