@@ -8,29 +8,35 @@
   <link rel="stylesheet" href="https://use.typekit.net/xxxxxx.css"> <!-- 替换为House of Gul使用的字体 -->
 </head>
 <body>
-  <div class="cursor"></div>
+  <!-- 新增的动态背景容器 -->
+  <div id="dynamic-bg"></div>
   
+  <!-- 原有内容调整居中 -->
   <div class="scroll-container">
-    <main class="centered-content">
-      <div class="portrait-container">
-        <img src="images/portrait.jpg" alt="Jieru Zhang" class="portrait">
-      </div>
-      <h1 class="title">JIERU ZHANG</h1>
-      <p class="contact">jieruzhang957@gmail.com<br>+44 7826 820442<br>@rubyyy_anti</p>
+    <div class="content">
+      <img src="images/portrait.jpg" alt="Portrait" class="portrait">
+      <h1>JIERU ZHANG</h1>
+      <p>Email: jieruzhang957@gmail.com</p>
+      <p>Phone: +44 7826 820442</p>
+      <p>IG / RED: <strong>@rubyyy_anti</strong></p>
       
-      <div class="projects-grid">
-        <a href="shell.html" class="project-icon" data-cursor-hover>𓆝</a>
-        <a href="not-found-again.html" class="project-icon" data-cursor-hover>𓆡</a>
-        <a href="insomnia.html" class="project-icon" data-cursor-hover>𓇼</a>
-        <a href="skin-hole.html" class="project-icon" data-cursor-hover>𓁹</a>
-        <a href="tentacles-wind.html" class="project-icon" data-cursor-hover>𓆣</a>
-        <a href="babe.html" class="project-icon" data-cursor-hover>𓃥</a>
-      </div>
-    </main>
+      <!-- 项目链接改为无边框图标 -->
+      <nav class="projects-grid">
+        <a href="shell.html" class="project-icon">𓆝</a>
+        <a href="not-found-again.html" class="project-icon">𓆡</a>
+        <a href="insomnia.html" class="project-icon">𓇼</a>
+        <a href="skin-hole.html" class="project-icon">𓁹</a>
+        <a href="tentacles-wind.html" class="project-icon">𓆣</a>
+        <a href="babe.html" class="project-icon">𓃥</a>
+      </nav>
+    </div>
     
-    <div class="spacer"></div> <!-- 长滚动空间 -->
+    <!-- 长滚动空间 -->
+    <div class="spacer"></div>
   </div>
 
+  <!-- 在最后添加这两行 -->
+  <script src="js/background.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
