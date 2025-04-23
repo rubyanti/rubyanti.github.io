@@ -1,65 +1,56 @@
 // 全屏滚动控制器
-class ProjectScroller {
-  constructor() {
-    this.sections = document.querySelectorAll('.project-section');
-    this.currentIndex = 0;
-    this.isScrolling = false;
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.project-section');
+  let currentIndex = 0;
+  let isScrolling = false;
+  
+  // 初始化位置
+  sections.forEach((section, index) => {
+    section.style.transform = `translateY(${index * 100}%)`;
+  });
+
+  // 鼠标滚轮事件
+  window.addEventListener('wheel', (e) => {
+    if (isScrolling) return;
     
-    this.init();
-  }
+    if (e.deltaY > 0) {
+      goTo(currentIndex + 1);
+    } else {
+      goTo(currentIndex - 1);
+    }
+  });
 
-  init() {
-    // 初始化布局
-    this.sections.forEach((section, i) => {
-      section.style.transform = `translateY(${i * 100}%)`;
-    });
-
-    // 滚动事件
-    window.addEventListener('wheel', (e) => {
-      if (this.isScrolling) return;
-      
-      if (e.deltaY > 0) {
-        this.next();
+  // 触摸事件
+  let touchStartY = 0;
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  
+  window.addEventListener('touchend', (e) => {
+    const touchEndY = e.changedTouches[0].clientY;
+    const diff = touchStartY - touchEndY;
+    
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goTo(currentIndex + 1);
       } else {
-        this.prev();
+        goTo(currentIndex - 1);
       }
-    });
+    }
+  }, { passive: true });
 
-    // 触摸支持
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
-    });
-    window.addEventListener('touchend', (e) => {
-      const diff = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) > 50) {
-        diff > 0 ? this.next() : this.prev();
-      }
-    });
-  }
-
-  next() {
-    if (this.currentIndex >= this.sections.length - 1) return;
-    this.goTo(this.currentIndex + 1);
-  }
-
-  prev() {
-    if (this.currentIndex <= 0) return;
-    this.goTo(this.currentIndex - 1);
-  }
-
-  goTo(index) {
-    this.isScrolling = true;
-    this.currentIndex = index;
+  // 跳转到指定章节
+  function goTo(index) {
+    if (index < 0 || index >= sections.length) return;
     
-    this.sections.forEach((section, i) => {
+    isScrolling = true;
+    currentIndex = index;
+    
+    sections.forEach((section, i) => {
       section.style.transform = `translateY(${100 * (i - index)}%)`;
       section.style.opacity = i === index ? 1 : 0.3;
     });
-
-    setTimeout(() => this.isScrolling = false, 1000);
+    
+    setTimeout(() => isScrolling = false, 1000);
   }
-}
-
-// 初始化
-new ProjectScroller();
+});
